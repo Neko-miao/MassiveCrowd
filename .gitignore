@@ -1,0 +1,13 @@
+Library
+Logs
+obj
+Packages
+Temp
+.plastic
+.vs
+*.csproj
+*.meta
+*.sln
+ArtAssets
+LocalPackages
+.vsconfig
