@@ -12,13 +12,45 @@ namespace AnimationSharing
         private List<PerActorData> mPerActorData;
         private List<PerStateData> mPerStateData;
         private AnimationSharingManager mAnimSharingManager;
+        private Avatar Skeleton;
         private AnimationSharingStateProcessor mStateProcessor;
 
-        public AnimationSharingInstance() { }
+        internal AnimationSharingInstance() { }
 
-        public void Setup()
+        public void Setup(AnimationSharingSetupWithAvatar setup)
         {
+            Skeleton = setup.Skeleton;
+            var processorCls = setup.StateProcessor.GetClass();
+            mStateProcessor = System.Activator.CreateInstance(processorCls) as AnimationSharingStateProcessor;
+            if(mStateProcessor != null )
+            {
+                SetupState(setup);
+            }
+            else
+            {
+                UnityEngine.Debug.LogError("AnimationSharingStateProcessor is null");
+            }
+        }
 
+        private void SetupState(AnimationSharingSetupWithAvatar setup)
+        {
+            if(mPerStateData == null)
+            {
+                mPerStateData = new List<PerStateData>();
+            }
+
+            foreach(var entry in setup.AnimStates)
+            {
+                PerStateData data = new PerStateData();
+                data.StateEnumValue = entry.State;
+                for(int i = 0; i < entry.StateSetups.Length; i++)
+                {
+                    var stateSetup = entry.StateSetups[i];
+
+                    // 为每个Clip构造Playable动画
+                }
+                mPerStateData.Add(data);
+            }
         }
 
         public void TickActorStates()

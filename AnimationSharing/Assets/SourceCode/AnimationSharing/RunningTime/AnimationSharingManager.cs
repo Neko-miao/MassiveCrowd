@@ -12,12 +12,22 @@ namespace AnimationSharing
     {
         private AnimationSharingInstance mAnimSharingInstance;
         private Dictionary<ulong, GameObject> mRegisteredActors;
+        private Avatar mSkeleton;
 
         internal AnimationSharingManager() { }
 
         public void Initialise(AnimationSharingSetup setup)
         {
-
+            mSkeleton = setup.SetupWithAvatar.Skeleton;
+            if(mSkeleton != null)
+            {
+                mAnimSharingInstance = new AnimationSharingInstance();
+                mAnimSharingInstance.Setup(setup.SetupWithAvatar);
+            }
+            else
+            {
+                UnityEngine.Debug.LogError("Avatar is null.");
+            }
         }
 
         public void OnDestroyed()

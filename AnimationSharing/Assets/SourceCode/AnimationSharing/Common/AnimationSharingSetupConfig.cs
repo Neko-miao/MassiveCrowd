@@ -11,8 +11,7 @@ namespace AnimationSharing
     [Serializable]
     public class AnimationSharingSetupWithAvatar
     {
-        public Avatar Skeletal;
-        public Mesh SkinnedMesh;
+        public Avatar Skeleton;
         public MonoScript StateProcessor;
         public AnimationStateEntry[] AnimStates;
     }
@@ -20,7 +19,7 @@ namespace AnimationSharing
     [Serializable]
     public class AnimationStateEntry
     {
-        public uint State;
+        public int State;
         public AnimationStateSetup[] StateSetups;
     }
 
@@ -28,5 +27,6 @@ namespace AnimationSharing
     public class AnimationStateSetup
     {
         public AnimationClip AnimClip;
+        public bool enable;
     }
 }
