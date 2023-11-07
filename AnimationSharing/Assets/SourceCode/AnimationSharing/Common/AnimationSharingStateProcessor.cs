@@ -1,7 +1,15 @@
-﻿using UnityEngine;
+﻿using AnimationSharing;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using UnityEditor;
+using UnityEngine;
 
 namespace AnimationSharing
 {
+    [Serializable]
     public class AnimationSharingStateProcessor : ScriptableObject
     {
         public AnimationStateEnum GetAnimationStateEnum()
@@ -9,9 +17,9 @@ namespace AnimationSharing
             return GetAnimationStateEnum_Internal();
         }
 
-        public void ProcessActorStates()
+        public int ProcessActorStates(GameObject actor)
         {
-            ProcessActorStates_Internal();
+            return ProcessActorStates_Internal(actor);
         }
 
         protected virtual AnimationStateEnum GetAnimationStateEnum_Internal()
@@ -19,9 +27,9 @@ namespace AnimationSharing
             return null;
         }
 
-        protected virtual void ProcessActorStates_Internal()
+        protected virtual int ProcessActorStates_Internal(GameObject actor)
         {
-
+            return 0;
         }
     }
 }

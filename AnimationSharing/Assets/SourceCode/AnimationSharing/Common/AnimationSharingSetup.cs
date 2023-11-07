@@ -6,7 +6,7 @@ namespace AnimationSharing
     public class AnimationSharingSetup : ScriptableObject
     {
         [SerializeField]
-        public AnimationSharingSetupWithAvatar SetupConfig;
+        public AnimationSharingSetupWithAvatar SetupWithAvatar;
     }
 }
 

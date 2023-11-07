@@ -13,10 +13,16 @@ namespace AnimationSharing
         public int CurrentState;
         public int PreviousState;
         public int PermutationIndex;
+
+        public bool IsRequiredTick;
+
+        public GameObject Actor;
+        public SkinnedMeshRenderer[] SkinnedMeshes;
     }
 
     public class PerStateData
     {
-
+        public int StateEnumValue;
+        public SkinnedMeshRenderer[] SkinnedMeshes;
     }
 }

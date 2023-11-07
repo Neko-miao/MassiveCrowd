@@ -8,27 +8,19 @@ using UnityEngine;
 
 namespace AnimationSharing
 {
-    internal class AnimationSharingManager
+    public class AnimationSharingManager
     {
         private AnimationSharingInstance mAnimSharingInstance;
         private Dictionary<ulong, GameObject> mRegisteredActors;
 
-        private AnimationSharingManager() { }
+        internal AnimationSharingManager() { }
 
-        private static AnimationSharingManager mInstance;
-        public static AnimationSharingManager Instance
+        public void Initialise(AnimationSharingSetup setup)
         {
-            get
-            {
-                if(mInstance == null)
-                {
-                    mInstance = new AnimationSharingManager();
-                }
-                return mInstance;
-            }
+
         }
 
-        public void Setup()
+        public void OnDestroyed()
         {
 
         }
@@ -43,11 +35,13 @@ namespace AnimationSharing
 
         }
 
-        public void Tick()
+        public void Tick(float deltaTime)
         {
             if(mAnimSharingInstance != null)
             {
-
+                mAnimSharingInstance.TickActorStates();
+                mAnimSharingInstance.KickoffInstances();
+                mAnimSharingInstance.TickAnimationStates();
             }
         }
     }

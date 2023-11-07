@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using UnityEditor;
 using UnityEngine;
 
 namespace AnimationSharing
@@ -12,8 +13,7 @@ namespace AnimationSharing
     {
         public Avatar Skeletal;
         public Mesh SkinnedMesh;
-        public AnimationSharingStateProcessor StateProcessor;
-        public MonoBehaviour ssss;
+        public MonoScript StateProcessor;
         public AnimationStateEntry[] AnimStates;
     }
 
