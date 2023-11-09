@@ -3,17 +3,27 @@
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: cdb112dd01af94148a575a66299a3fb9, type: 3}
   m_Name: AnimationSharingSetup
   m_EditorClassIdentifier: 
-  SetupConfig:
-    Skeletal: {fileID: 0}
-    SkinnedMesh: {fileID: 0}
-    StateProcessor: {fileID: 0}
-    AnimStates: []
+  SetupWithAvatar:
+    Skeleton: {fileID: 9000000, guid: f3bdc1c6ebf6a7a47ba9ddd986db5355, type: 3}
+    SharedPrefab: {fileID: 1162965310137564, guid: bb075a96037d1514f86c0b8e6b0641f0,
+      type: 2}
+    StateProcessor: {fileID: 11500000, guid: 49190692753585a4e8fba312f295fc45, type: 3}
+    AnimStates:
+    - State: 0
+      StateSetups:
+      - AnimClip: {fileID: 7400000, guid: ccc45784b361a56448a485ea3a2691d5, type: 3}
+        MaxConcurrentInstances: 1
+        enable: 1
+    - State: 1
+      StateSetups:
+      - AnimClip: {fileID: 7400002, guid: 6522b63a13fa27947b56d76ce1365868, type: 3}
+        MaxConcurrentInstances: 1
+        enable: 1

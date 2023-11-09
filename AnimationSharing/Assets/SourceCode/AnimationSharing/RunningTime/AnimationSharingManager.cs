@@ -2,7 +2,6 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 using UnityEditor;
 using UnityEngine;
 
@@ -11,7 +10,6 @@ namespace AnimationSharing
     public class AnimationSharingManager
     {
         private AnimationSharingInstance mAnimSharingInstance;
-        private Dictionary<ulong, GameObject> mRegisteredActors;
         private Avatar mSkeleton;
 
         internal AnimationSharingManager() { }
@@ -37,12 +35,19 @@ namespace AnimationSharing
 
         public void RegisterActorWithAvatar(GameObject actor)
         {
-
+            // 检查avatar是否兼容  
+            var animator = actor.GetComponent<Animator>();
+            if(animator == null || animator.avatar != mSkeleton)
+            {
+                UnityEngine.Debug.LogFormat("imcompitable avatar...");
+                return;
+            }
+            mAnimSharingInstance.RegisterActor(actor);    
         }
 
         public void UnregisterActor(GameObject actor)
         {
-
+            // 恢复rootBone和Animator的设置
         }
 
         public void Tick(float deltaTime)
@@ -52,6 +57,7 @@ namespace AnimationSharing
                 mAnimSharingInstance.TickActorStates();
                 mAnimSharingInstance.KickoffInstances();
                 mAnimSharingInstance.TickAnimationStates();
+                mAnimSharingInstance.TickAnimation(deltaTime);
             }
         }
     }

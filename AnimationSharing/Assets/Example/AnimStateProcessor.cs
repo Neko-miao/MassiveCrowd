@@ -15,6 +15,6 @@ public class AnimStateProcessor : AnimationSharingStateProcessor
         {
             return comp.GetCurrentState();
         }
-        return 0;
+        return 1;
     }
 }
